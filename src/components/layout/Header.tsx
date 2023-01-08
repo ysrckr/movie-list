@@ -12,6 +12,7 @@ import { SelectChangeEvent } from "@mui/material"
 import { types } from "../../options/type"
 import { countries } from "../../options/country"
 import { services } from "../../options/service"
+import { ToastContainer } from 'react-toastify';
 
 
 type HeaderProps = {
@@ -33,33 +34,38 @@ export const Header: FC<HeaderProps> = ({
   refetch,
 }) => {
   return (
-      <div className='flex flex-col items-center justify-center'>
+      <header className='flex flex-col items-center justify-center gap-4'>
       <Title title='Movie List'/>
-      <Selector
+      
+      <div className='flex items-center justify-center'>
+        <Selector
         label='Type'
         labelId='type'
         value={type}
         handleChange={handleChange}
         options={types}
-      />
-      <Selector
-        label='Country'
-        labelId='country'
-        value={country}
-        handleChange={handleChange}
-        options={countries}
-      />
-      <Selector
-        label='Service'
-        labelId='service'
-        value={service}
-        handleChange={handleChange}
-        options={services}
-      />
+        />
+        <Selector
+          label='Country'
+          labelId='country'
+          value={country}
+          handleChange={handleChange}
+          options={countries}
+        />
+        <Selector
+          label='Service'
+          labelId='service'
+          value={service}
+          handleChange={handleChange}
+          options={services}
+        />
 
-      <SearchBar setSearchQuery={setSearchQuery} />
+        <SearchBar setSearchQuery={setSearchQuery} />
 
-      <FetchButton fetch={refetch} />
-    </div>
+        <FetchButton fetch={refetch} />
+        
+        <ToastContainer />
+      </div>
+    </header>
   )
 }
