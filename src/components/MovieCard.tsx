@@ -9,7 +9,11 @@ type Props = {
 
 export const MovieCard: FC<Props> = ({ movie }) => {
   return (
-    <div className='bg-gray-100 rounded-md p-2 grid grid-cols-1 gap-2 items-center movie-card'>
+    <div
+      className='bg-gray-100 rounded-md 
+      p-2 grid grid-cols-1 place-items-center 
+      gap-2 items-center movie-card'
+    >
       <img
         src={movie.posterURLs['185']}
         alt={movie.title}

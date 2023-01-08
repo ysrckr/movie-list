@@ -3,10 +3,11 @@ import { FC } from "react"
 
 type Props = {
   fetch: () => void
+  isFetching: boolean
 }
 
 
-export const FetchButton: FC<Props> = ({fetch}) => {
+export const FetchButton: FC<Props> = ({fetch, isFetching}) => {
   return (
     <FormControl
       sx={{
@@ -17,6 +18,7 @@ export const FetchButton: FC<Props> = ({fetch}) => {
       <Button
         variant="outlined"
         onClick={fetch}
+        disabled={isFetching}
       >
         Search
       </Button>

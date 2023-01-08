@@ -10,9 +10,7 @@ export const useGetMovieList = (params: MovieParams) => {
     ['movies'],
     () => {
       return getMovies({
-        country: params.country,
-        service: params.service,
-        type: params.type,
+        ...params,
       });
     },
     {

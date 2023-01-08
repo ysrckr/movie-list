@@ -22,6 +22,7 @@ type HeaderProps = {
   handleChange: (e: SelectChangeEvent) => void;
   setSearchQuery: (query: string) => void;
   refetch: () => void;
+  isFetching: boolean;
 };
 
 
@@ -32,6 +33,7 @@ export const Header: FC<HeaderProps> = ({
   handleChange,
   setSearchQuery,
   refetch,
+  isFetching,
 }) => {
   return (
       <header className='flex flex-col items-center justify-center gap-4'>
@@ -62,7 +64,10 @@ export const Header: FC<HeaderProps> = ({
 
         <SearchBar setSearchQuery={setSearchQuery} />
 
-        <FetchButton fetch={refetch} />
+        <FetchButton
+          fetch={refetch}
+          isFetching={isFetching}
+        />
         
         <ToastContainer />
       </div>

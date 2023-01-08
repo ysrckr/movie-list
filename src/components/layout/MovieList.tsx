@@ -1,11 +1,10 @@
 import { FC } from "react"
-import Movie from "../types/Movie"
-import { MovieCard } from "./MovieCard"
+import Movie from "../../types/Movie"
+import { MovieCard } from "../MovieCard"
 
 type Props = {
   movies: Movie[]
 }
-
 
 export const MovieList: FC<Props> = ({movies}) => {
   return (
