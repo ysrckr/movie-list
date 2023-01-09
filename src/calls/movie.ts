@@ -1,5 +1,5 @@
 import Movie from "../types/Movie";
-import { streamingRequest } from "../utilities/axios";
+import { movieRequest, streamingRequest } from "../utilities/axios";
 
 export interface MovieParams {
   country: string;
@@ -10,8 +10,9 @@ export interface MovieParams {
 }
 
 export interface MovieDataBaseResponse {
+  id: string;
+
   primaryImage: {
-    id: string;
     width: number;
     height: number;
     url: string;
@@ -32,7 +33,7 @@ export interface MovieDataBaseResponse {
 type GetMovies = (params: MovieParams) => Promise<Movie[]>;
 
 export const getMovies: GetMovies = async (params): Promise<Movie[]> => {
-  
+
   const response = await streamingRequest.get(
     '/search/basic', {
     params: {
@@ -48,10 +49,9 @@ export const getMovies: GetMovies = async (params): Promise<Movie[]> => {
 }
 
 export const getMovieById = async (id: string): Promise<MovieDataBaseResponse> => {
-  const response = await streamingRequest.get(
-    `/${id}`,);
+  const response = await movieRequest.get(`/${id}`);
   const data = await response.data;
   const results = await data.results;
   return results;
 }
-  
+

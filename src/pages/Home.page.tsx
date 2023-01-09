@@ -24,6 +24,7 @@ export const HomePage = () => {
     refetch,
   } = useGetMovieList({ type, country, service, keyword: debouncedSearch });
 
+
   const handleChange = useCallback(
     (e: SelectChangeEvent) => {
       switch (e.target.name) {
