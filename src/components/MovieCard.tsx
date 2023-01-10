@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Movie from '../types/Movie';
-import { Link } from 'wouter';
+import { Link } from 'react-router-dom';
 
 type Props = {
   movie: Movie;
@@ -14,7 +14,7 @@ export const MovieCard: FC<Props> = ({ movie }) => {
       p-2 grid grid-cols-1 place-items-center
       gap-2 items-center movie-card"
     >
-      <Link href={`/movie/${movie.imdbID}`}>
+      <Link to={`/movies/${movie.imdbID}`}>
         <img
           src={movie.posterURLs['185']}
           alt={movie.title}

@@ -1,13 +1,14 @@
-import { SelectChangeEvent } from "@mui/material";
-import { useState, useCallback } from "react";
-import { Loader } from "../components/Loader";
-import { Header } from "../components/layout/Header";
-import { MovieList } from "../components/layout/MovieList";
-import useDebounce from "../hooks/useDebounce";
-import { useGetMovieList } from "../hooks/useGetMovieList";
-import { Country } from "../options/country";
-import { Service } from "../options/service";
-import { Type } from "../options/type";
+import { SelectChangeEvent } from '@mui/material';
+import { useState, useCallback } from 'react';
+import { Loader } from '../components/Loader';
+import { Header } from '../components/layout/Header';
+import { MovieList } from '../components/layout/MovieList';
+import useDebounce from '../hooks/useDebounce';
+import { useGetMovieList } from '../hooks/useGetMovieList';
+import { Country } from '../options/country';
+import { Service } from '../options/service';
+import { Type } from '../options/type';
+import { Outlet } from 'react-router-dom';
 
 export const HomePage = () => {
   const [type, SetType] = useState<Type>(Type.Movie);
@@ -23,7 +24,6 @@ export const HomePage = () => {
     isFetching,
     refetch,
   } = useGetMovieList({ type, country, service, keyword: debouncedSearch });
-
 
   const handleChange = useCallback(
     (e: SelectChangeEvent) => {
@@ -41,7 +41,7 @@ export const HomePage = () => {
           break;
       }
     },
-    [type, country, service],
+    [type, country, service]
   );
 
   return (
@@ -61,4 +61,4 @@ export const HomePage = () => {
       {movies && <MovieList movies={movies} />}
     </>
   );
-}
+};

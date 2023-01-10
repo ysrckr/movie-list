@@ -2,16 +2,13 @@ import { ToastContainer } from 'react-toastify';
 import { useGetMovieById } from '../hooks/useGetMovieById';
 import { FC } from 'react';
 import { Box, Typography } from '@mui/material';
-import { Link } from 'wouter';
+import { Link, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Loader } from '../components/Loader';
 
-type Props = {
-  id: string;
-};
-
-export const MoviePage: FC<Props> = ({id}) => {
+export const MoviePage: FC = () => {
+  const { id = '' } = useParams<{ id: string }>();
   const { data: movie, isLoading } = useGetMovieById(id);
 
   if (isLoading) {
@@ -25,9 +22,9 @@ export const MoviePage: FC<Props> = ({id}) => {
         variant="outlined"
         startIcon={<ArrowBackIcon />}
         color="info"
-        sx={{ mb: 2 }}
+        sx={{ m: 4 }}
       >
-        <Link href="/">Go Back</Link>
+        <Link to="/">Go Back</Link>
       </Button>
 
       <Box className="grid grid-cols-1 items-center justify-items-center gap-4 mt-10">
